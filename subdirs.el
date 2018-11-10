@@ -5,7 +5,7 @@
 ;;  * adds autoload (by loading "loaddefs.el") if missing
 ;;
 
-(let ((fsym 'lsp-addon-jump-to-error-mode)
+(let ((fsym 'on-save-jump-to-lsp-error-mode)
       (dir (or (and load-file-name (file-name-directory load-file-name))
 	       default-directory)));; for ^X^E
   (add-to-list 'load-path dir)
