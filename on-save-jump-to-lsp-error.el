@@ -97,7 +97,9 @@ Also sets mode-line color to on-save-jump-to-lsp-error-alert-color."
             (->> (ht-values (lsp-diagnostics))
                  (-flatten)
                  (--first (eq (lsp-diagnostic-severity it) 1)))))
-      (when error-diag
+      (when (and error-diag
+                 (/= (1+ (lsp-diagnostic-line error-diag))
+                     (line-number-at-pos)))
         (goto-line (1+ (lsp-diagnostic-line error-diag)))
         (forward-char (lsp-diagnostic-column error-diag)))
       (on-save-jump-to-lsp-error-set-mode-line-alert error-diag))))
